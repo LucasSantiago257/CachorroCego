@@ -1,19 +1,19 @@
 import random
 
-rows = input("Quantas linhas terá o tabuleiro?")
+rows = input("Quantas linhas terá o tabuleiro? ")
 try:
     rows = int(rows)
 except:
-    print("Número inválido de linhas. Utilizando o padrão de 5")
+    print("Número inválido de linhas. Utilizando o padrão de 5 ")
     rows = 5
 
-cols = input("Quantas colunas terá o seu tabuleiro?")
+cols = input("Quantas colunas terá o seu tabuleiro? ")
 try:
     cols = int(cols)
 except:
-    print("Número inválido de colunas. Utilizando o padrão de 5")
+    print("Número inválido de colunas. Utilizando o padrão de 5 ")
     cols = 5
-    
+
 actions = ['cima', 'baixo', 'esquerda', 'direita']
 dog_position = (0,0)
 print("Cachorro cego começando na posição", dog_position)
@@ -44,18 +44,18 @@ def choose_action(position, action) -> tuple[int, int]:
 
 best_path = None
 
-max_steps = input("Quantos passos seu cachorro pode dar?")
+max_steps = input("Quantos passos seu cachorro pode dar? ")
 try:
     max_steps = int(max_steps)
 except:
-    print("Seu cachorro não te obedeceu e vai andar 1000 passos")
+    print("Seu cachorro não te obedeceu e vai andar 1000 passos ")
     max_steps = 1000
 
-episode_amount = input("Em quantos episódios você quer treinar o cachorro?")
+episode_amount = input("Em quantos episódios você quer treinar o cachorro? ")
 try:
     episode_amount = int(episode_amount)
 except:
-    print("Entrada inválida. Utilizando valor padrão de 100 episódios")
+    print("Entrada inválida. Utilizando valor padrão de 100 episódios ")
     episode_amount = 100
 for episode in range(episode_amount): # N Vezes até achar o melhor caminho
     dog_position = (0,0)
