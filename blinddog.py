@@ -79,9 +79,9 @@ for episode in range(episode_amount): # N Vezes até achar o melhor caminho
 
 if best_path:
     print(f"O Cachorro cego encontrou a comida em {steps_taken} passos!")
-    print("Caminho:", best_path)
+    print("Melhor Caminho encontrado:", best_path)
 
 if not best_path:
     print("O Cachorro cego não conseguiu encontrar a comida.")
     print("R.I.P")
-    print("Caminho final:", final_path)
+    print("Caminho final percorrido:", final_path)
