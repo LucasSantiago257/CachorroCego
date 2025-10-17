@@ -31,7 +31,12 @@ def choose_action(position, action) -> tuple[int, int]:
 
 best_path = None
 
-max_steps = 10000
+max_steps = input("Quantos passos seu cachorro pode dar?")
+try:
+    max_steps = int(max_steps)
+except:
+    print("Seu cachorro não te obedeceu e vai andar 1000 passos")
+    max_steps = 1000
 
 start = 0.0
 end_time = 0.0
@@ -42,11 +47,11 @@ try:
 except:
     print("Entrada inválida. Utilizando valor padrão de 100 episódios")
     episode_amount = 100
-for episode in range(episode_amount):
+for episode in range(episode_amount): # N Vezes até achar o melhor caminho
     dog_position = (0,0)
     path = [dog_position]
     steps_taken = 0
-    while dog_position != food_position and steps_taken < max_steps:
+    while dog_position != food_position and steps_taken < max_steps: # A cada iteração, tem uma chance de percorrer um passo já conhecido...
         if best_path and random.random() < 0.7:
             next_index = len(path)-1
             if next_index < len(best_path)-1:
@@ -54,7 +59,7 @@ for episode in range(episode_amount):
             else:
                 break
             
-        else:
+        else: # ... Ou um aleatório
             action = random.choice(actions)
             next_step = choose_action(dog_position, action)
             steps_taken += 1
@@ -65,7 +70,7 @@ for episode in range(episode_amount):
                 dog_position = next_step
             
         
-        if dog_position == food_position:
+        if dog_position == food_position: # Achou! Verifica se o caminho achado é melhor que o achado anteriormente
             path.append(dog_position)
             if not best_path or len(path) < len(best_path):
                 best_path = path
