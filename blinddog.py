@@ -1,0 +1,79 @@
+import random
+
+rows, cols = (10, 10)
+actions = ['cima', 'baixo', 'esquerda', 'direita']
+dog_position = (0,0)
+print("Cachorro cego começando na posição", dog_position)
+food_position = (random.randint(0, rows-1), random.randint(0, cols-1))
+print("Comida colocada na posição", food_position)
+
+def choose_action(position, action) -> tuple[int, int]:
+    """
+    Escolhe a próxima ação com base na posição atual e na ação desejada.
+    Args:
+    position (tuple): A posição atual do cachorro (linha, coluna).
+    action (str): A ação desejada ('cima', 'baixo', 'esquerda', 'direita').
+
+    Returns:
+    Uma tupla representando a ação que o cachorro tomará.
+    """
+    
+    r, c = position
+    if action == 'cima' and r > 0:
+        r -= 1
+    elif action == 'baixo' and r < rows - 1:
+        r += 1
+    elif action == 'esquerda' and c > 0:
+        c -= 1
+    elif action == 'direita' and c < cols - 1:
+        c += 1
+    return (r, c)
+
+best_path = None
+
+max_steps = 10000
+
+start = 0.0
+end_time = 0.0
+
+for episode in range(1000):
+    dog_position = (0,0)
+    path = [dog_position]
+    steps_taken = 0
+    while dog_position != food_position and steps_taken < max_steps:
+        if best_path and random.random() < 0.7:
+            next_index = len(path)-1
+            if next_index < len(best_path)-1:
+                dog_position = best_path[next_index + 1]
+            else:
+                break
+            
+        else:
+            action = random.choice(actions)
+            next_step = choose_action(dog_position, action)
+            steps_taken += 1
+            
+            
+            if next_step not in path:
+                path.append(dog_position)
+                dog_position = next_step
+            
+        
+        if dog_position == food_position:
+            path.append(dog_position)
+            if not best_path or len(path) < len(best_path):
+                best_path = path
+            break
+        else:
+            if steps_taken >= max_steps:
+                final_path = path
+                break
+
+if best_path:
+    print(f"O Cachorro cego encontrou a comida em {steps_taken} passos!")
+    print("Caminho:", best_path)
+
+if not best_path:
+    print("O Cachorro cego não conseguiu encontrar a comida.")
+    print("R.I.P")
+    print("Caminho final:", final_path)
