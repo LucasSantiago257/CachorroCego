@@ -38,9 +38,6 @@ except:
     print("Seu cachorro não te obedeceu e vai andar 1000 passos")
     max_steps = 1000
 
-start = 0.0
-end_time = 0.0
-
 episode_amount = input("Em quantos episódios você quer treinar o cachorro?")
 try:
     episode_amount = int(episode_amount)
