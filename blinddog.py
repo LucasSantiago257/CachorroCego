@@ -1,6 +1,19 @@
 import random
 
-rows, cols = (10, 10)
+rows = input("Quantas linhas terá o tabuleiro?")
+try:
+    rows = int(rows)
+except:
+    print("Número inválido de linhas. Utilizando o padrão de 5")
+    rows = 5
+
+cols = input("Quantas colunas terá o seu tabuleiro?")
+try:
+    cols = int(cols)
+except:
+    print("Número inválido de colunas. Utilizando o padrão de 5")
+    cols = 5
+    
 actions = ['cima', 'baixo', 'esquerda', 'direita']
 dog_position = (0,0)
 print("Cachorro cego começando na posição", dog_position)
