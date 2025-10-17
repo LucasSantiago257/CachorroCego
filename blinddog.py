@@ -14,11 +14,15 @@ except:
     print("Número inválido de colunas. Utilizando o padrão de 5 ")
     cols = 5
 
+
+
 actions = ['cima', 'baixo', 'esquerda', 'direita']
 dog_position = (0,0)
 print("Cachorro cego começando na posição", dog_position)
 food_position = (random.randint(0, rows-1), random.randint(0, cols-1))
 print("Comida colocada na posição", food_position)
+
+print("O Cachorro começa a farejar a comida!")
 
 def choose_action(position, action) -> tuple[int, int]:
     """
