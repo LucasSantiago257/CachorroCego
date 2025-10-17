@@ -36,7 +36,13 @@ max_steps = 10000
 start = 0.0
 end_time = 0.0
 
-for episode in range(1000):
+episode_amount = input("Em quantos episódios você quer treinar o cachorro?")
+try:
+    episode_amount = int(episode_amount)
+except:
+    print("Entrada inválida. Utilizando valor padrão de 100 episódios")
+    episode_amount = 100
+for episode in range(episode_amount):
     dog_position = (0,0)
     path = [dog_position]
     steps_taken = 0
